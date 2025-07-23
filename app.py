@@ -27,9 +27,16 @@ def chat():
         response = client.chat.completions.create(
             model="gpt-3.5-turbo",  # or "gpt-4" if you have access
             messages=[
-                {"role": "system", "content": "You are a helpful assistant."},
-                {"role": "user", "content": message}
-            ],
+            {
+                "role": "system",
+                "content": (
+                    "You are a knowledgeable digital marketing assistant. "
+                    "Only answer questions related to SEO, Google Ads, social media marketing, content strategy, analytics, or similar digital marketing topics. "
+                    "If a user asks something outside digital marketing, politely say it's beyond your scope."
+                )
+            },
+            {"role": "user", "content": message}
+        ],
             temperature=0.7,
             max_tokens=300
         )
