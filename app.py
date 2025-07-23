@@ -1,4 +1,5 @@
 from flask import Flask, request, jsonify
+from flask_cors import CORS  
 import openai
 import os
 
@@ -7,7 +8,6 @@ app = Flask(__name__)
 # ✅ Allow CORS from all origins (or restrict to your domain)
 CORS(app, origins=["https://optymise.in"])  # or CORS(app) to allow all
 
-# Read API key from environment variable
 openai.api_key = os.getenv("OPENAI_API_KEY")
 
 @app.route("/")
